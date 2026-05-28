@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Body Manual</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-primary: #0a0a0a;
+      --bg-secondary: #111111;
+      --text-primary: #f0ece4;
+      --text-secondary: #888880;
+      --accent: #e8dcc8;
+      --accent-light: #4a453d;
+      --border: #222220;
+      --card-bg: #141413;
+      --nervous: #6bc4a6;
+      --movement: #e8a96b;
+      --sleep: #b896e8;
+      --environment: #7dd96b;
+      --metabolism: #e88b6b;
+      --brain: #6bb8e8;
+      --emotional: #e89696;
+      --worldview: #a0a09a;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::selection {
+      background: var(--accent);
+      color: var(--bg-primary);
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Header / Hero */
+    .hero {
+      padding: 100px 0 60px;
+      text-align: center;
+      background: var(--bg-secondary);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 500;
+      color: var(--text-primary);
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+    }
+
+    .hero .subtitle {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      font-weight: 300;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .hero .divider {
+      width: 60px;
+      height: 1px;
+      background: var(--accent-light);
+      margin: 28px auto 0;
+    }
+
+    /* Introduction Section */
+    .introduction {
+      padding: 60px 0 40px;
+    }
+
+    .section-intro {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      max-width: 700px;
+    }
+
+    .philosophy-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 640px) {
+      .philosophy-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .philosophy-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px 28px;
+    }
+
+    .philosophy-card ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .philosophy-card li {
+      padding: 6px 0;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .philosophy-card li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    .philosophy-card .card-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .philosophy-card .card-label.evolved {
+      color: var(--environment);
+    }
+
+    .philosophy-card .card-label.modern {
+      color: var(--emotional);
+    }
+
+    .key-insight {
+      grid-column: 1 / -1;
+      background: var(--bg-secondary);
+      border: 1px solid var(--accent-light);
+      border-radius: 12px;
+      padding: 24px 28px;
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+
+    .key-insight .icon {
+      width: 40px;
+      height: 40px;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .key-insight .icon svg {
+      width: 20px;
+      height: 20px;
+      color: var(--accent);
+    }
+
+    .key-insight p {
+      color: var(--text-primary);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    /* Part Navigation */
+    .part-nav {
+      padding: 40px 0 50px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+    }
+
+    .part-nav a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      transition: all 0.2s ease;
+    }
+
+    .part-nav a:hover {
+      border-color: var(--accent-light);
+      color: var(--accent);
+      background: var(--card-bg);
+      transform: translateY(-1px);
+    }
+
+    .part-nav .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+
+    /* Section Divider */
+    .section-divider {
+      height: 1px;
+      background: var(--border);
+      margin: 0 24px;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+      opacity: 0.6;
+    }
+
+    /* Parts */
+    .part {
+      padding: 60px 0;
+    }
+
+    .part-header {
+      margin-bottom: 40px;
+    }
+
+    .part-number {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+
+    .part-number .label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .part-number .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+    }
+
+    .part-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.5rem, 4vw, 2rem);
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+
+    /* Items Grid */
+    .items-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px;
+    }
+
+    .item-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      transition: all 0.25s ease;
+    }
+
+    .item-card:hover {
+      border-color: var(--accent-light);
+      box-shadow: 0 4px 24px rgba(255,255,255,0.03);
+      transform: translateY(-2px);
+    }
+
+    .item-card h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 14px;
+      line-height: 1.4;
+    }
+
+    .item-card ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .item-card li {
+      padding: 4px 0;
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+      padding-left: 18px;
+      position: relative;
+    }
+
+    .item-card li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 12px;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--accent-light);
+    }
+
+    /* Full-width cards for sections with fewer items */
+    .items-grid.single-row {
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+
+    /* Part Colors */
+    .part-nervous .part-number .dot { background: var(--nervous); }
+    .part-nervous .item-card li::before { background: var(--nervous); }
+    .part-nervous .item-card:hover { border-color: var(--nervous); }
+
+    .part-movement .part-number .dot { background: var(--movement); }
+    .part-movement .item-card li::before { background: var(--movement); }
+    .part-movement .item-card:hover { border-color: var(--movement); }
+
+    .part-sleep .part-number .dot { background: var(--sleep); }
+    .part-sleep .item-card li::before { background: var(--sleep); }
+    .part-sleep .item-card:hover { border-color: var(--sleep); }
+
+    .part-environment .part-number .dot { background: var(--environment); }
+    .part-environment .item-card li::before { background: var(--environment); }
+    .part-environment .item-card:hover { border-color: var(--environment); }
+
+    .part-metabolism .part-number .dot { background: var(--metabolism); }
+    .part-metabolism .item-card li::before { background: var(--metabolism); }
+    .part-metabolism .item-card:hover { border-color: var(--metabolism); }
+
+    .part-brain .part-number .dot { background: var(--brain); }
+    .part-brain .item-card li::before { background: var(--brain); }
+    .part-brain .item-card:hover { border-color: var(--brain); }
+
+    .part-emotional .part-number .dot { background: var(--emotional); }
+    .part-emotional .item-card li::before { background: var(--emotional); }
+    .part-emotional .item-card:hover { border-color: var(--emotional); }
+
+    .part-worldview .part-number .dot { background: var(--worldview); }
+    .part-worldview .item-card li::before { background: var(--worldview); }
+    .part-worldview .item-card:hover { border-color: var(--worldview); }
+
+    /* Closing Section */
+    .closing {
+      background: var(--bg-secondary);
+      padding: 60px 0 80px;
+      border-top: 1px solid var(--border);
+    }
+
+    .closing h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: var(--text-primary);
+      margin-bottom: 24px;
+    }
+
+    .closing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 12px;
+      margin-bottom: 36px;
+    }
+
+    .closing-item {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px 20px;
+      font-size: 0.9rem;
+      color: var(--text-primary);
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+
+    .closing-item:hover {
+      border-color: var(--accent-light);
+      background: var(--card-bg);
+    }
+
+    .closing-summary {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      max-width: 600px;
+      line-height: 1.8;
+    }
+
+    /* Back to top */
+    .back-to-top {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 32px;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--accent);
+      background: var(--bg-secondary);
+      border: 1px solid var(--accent-light);
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .back-to-top:hover {
+      background: var(--card-bg);
+      border-color: var(--accent);
+      color: var(--text-primary);
+    }
+
+    /* Smooth scroll */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+      .hero {
+        padding: 60px 0 40px;
+      }
+
+      .part {
+        padding: 40px 0;
+      }
+
+      .part-header {
+        margin-bottom: 28px;
+      }
+
+      .key-insight {
+        flex-direction: column;
+      }
+
+      .closing {
+        padding: 40px 0 60px;
+      }
+    }
+
+    /* Footer */
+    .footer {
+      padding: 30px 0;
+      text-align: center;
+      border-top: 1px solid var(--border);
+      background: var(--bg-primary);
+    }
+
+    .footer p {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero -->
+  <header class="hero" id="top">
+    <div class="container">
+      <h1>Body Manual</h1>
+      <p class="subtitle">A living guide to understanding how your body interacts with the modern world &mdash; and how small, daily choices shape long-term wellbeing.</p>
+      <div class="divider"></div>
+    </div>
+  </header>
+
+  <!-- Introduction -->
+  <section class="introduction">
+    <div class="container">
+      <p class="section-intro">
+        The human body is a remarkable system shaped by millions of years of evolution. Yet modern environments often pull us in directions our biology never anticipated. This manual maps the essential practices &mdash; from breath to movement, from sleep to connection &mdash; that help realign daily life with how we are designed to thrive.
+      </p>
+
+      <div class="philosophy-grid">
+        <div class="philosophy-card">
+          <div class="card-label evolved">Evolved For</div>
+          <ul>
+            <li>Natural movement</li>
+            <li>Sunlight</li>
+            <li>Varied terrain</li>
+            <li>Social connection</li>
+            <li>Environmental rhythms</li>
+          </ul>
+        </div>
+
+        <div class="philosophy-card">
+          <div class="card-label modern">Modern Reality</div>
+          <ul>
+            <li>Chronic sitting</li>
+            <li>Sensory overload</li>
+            <li>Artificial light exposure</li>
+            <li>Stress dysregulation</li>
+            <li>Disconnection from nature</li>
+          </ul>
+        </div>
+
+        <div class="key-insight">
+          <div class="icon">
+            <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18"/></svg>
+          </div>
+          <p>Small daily habits compound into major long-term health outcomes. The nervous system continuously responds to environmental signals &mdash; every moment is an opportunity for alignment.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Part Navigation -->
+  <nav class="part-nav">
+    <div class="container" style="display: contents;">
+      <a href="#part-nervous"><span class="dot" style="background: var(--nervous)"></span>I &mdash; Nervous System</a>
+      <a href="#part-movement"><span class="dot" style="background: var(--movement)"></span>II &mdash; Movement</a>
+      <a href="#part-sleep"><span class="dot" style="background: var(--sleep)"></span>III &mdash; Sleep</a>
+      <a href="#part-environment"><span class="dot" style="background: var(--environment)"></span>IV &mdash; Nature</a>
+      <a href="#part-metabolism"><span class="dot" style="background: var(--metabolism)"></span>V &mdash; Metabolism</a>
+      <a href="#part-brain"><span class="dot" style="background: var(--brain)"></span>VI &mdash; Cognition</a>
+      <a href="#part-emotional"><span class="dot" style="background: var(--emotional)"></span>VII &mdash; Emotional</a>
+      <a href="#part-worldview"><span class="dot" style="background: var(--worldview)"></span>VIII &mdash; Core Themes</a>
+    </div>
+  </nav>
+
+  <!-- Part I -->
+  <div class="section-divider"></div>
+  <section class="part part-nervous" id="part-nervous">
+    <div class="container">
+      <div class="part-header">
+        <div class="part-number">
+          <span class="label">Part I</span>
+          <span class="dot"></span>
+        </div>
+        <h2>Nervous System &amp; Breath Regulation</h2>
+      </div>
+      <div class="items-grid">
+        <div class="item-card">
+          <h3>Humming Practice</h3>
+          <ul>
+            <li>60-second humming exercise</li>
+            <li>Resonance and vibration effects</li>
+            <li>Vagus nerve stimulation</li>
+            <li>Relaxation response activation</li>
+          </ul>
+        </div>
+        <div class="item-card">
+          <h3>Slow Breathing</h3>
+          <ul>
+            <li>Longer exhalations</li>
+            <li>Nasal breathing emphasis</li>
+            <li>Reduced sympathetic nervous-system activation</li>
+          </ul>
+        </div>
+        <div class="item-card">
+          <h3>Mouth vs. Nasal Breathing</h3>
+          <ul>
+            <li>Jaw tension implications</li>
+            <li>Facial posture effects</li>
+            <li>Sleep-quality impact</li>
+          </ul>
+        </div>
+        <div class="item-card">
+          <h3>Silence and Stillness</h3>
+          <ul>
+            <li>Reduced stimulation</li>
+            <li>Mental reset</li>
+            <li>Nervous-system recovery</li>
+          </ul>
+        </div>
+        <div class="item-card">
+          <h3>Prayer / Meditation / Focused Attention</h3>
+          <ul>
+            <li>Daily reflective stillness</li>
+            <li>Emotional regulation support</li>
+            <li>Stress reduction</li>
+          </ul>
+        </div>
+        <div class="item-card">
+          <h3>Listening to Birds</h3>
+          <ul>
+            <li>Morning sensory regulation</li>
+            <li>"Safety signal" concept for the nervous system</li>
+          </ul>
+        </div>
+        <div class="item-card">
+          <h3>Weighted Pressure / Deep Pressure Stimulation</h3>
+          <ul>
+            <li>Weighted blankets</li>
+            <li>Calming physical sensory input</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Part II -->
+  <div class="section-divider"></div>
+  <section class="part part-movement" id="part-movement">
+    <div class="container">
+      <div class="part-header">
+        <div class="part-number">
+          <span class="label">Part II</span>
+          <span class="dot"></span>
+        </div>
+        <h2>Movement &amp; Posture</h2>
+      </div>
+      <div class="items-grid">
+        <div class="item-card">
+          <h3>Walking as Foundational Movement</h3>
+          <ul>
+            <li>Natural gait mechanics</li>
+            <li>Foot function</li>
+            <li>Joint alignment support</li>
+          </ul>
+        </div>
+        <div class="item-card">
+          <h3>Sitting Less</h3>
+          <ul>
+            <li>Dangers of prolonged inactivity</li>
+            <li>"Exercise doesn't cancel sitting"</li>
+          </ul>
+        </div>
+        <div class="item-card">
+          <h3>Soleus Pushup Exercise</h3>
+          <ul>
+            <li>Heel raises while seated</li>
+            <li>Glucose regulation support</li>
+            <li>Metabolic benefits</li>
+          </ul>
+        </div>
+        <div class="item-card">
+          <h3>Floor Sitting and Squatting</h3>
+          <ul>
+            <li>Hip mobility</li>
+            <li>Ankle flexibility</li>
+            <li>Pelvic positioning</li>
+          </ul>
+        </div>
+        <div class="item-card">
+          <h3>Lying Flat on the Floor</h3>
+          <ul>
+            <li>Spinal decompression</li>
+            <li>Postural awareness</li>
+            <li>Muscular relaxation</li>
+          </ul>
+        </div>
+        <div class="item-card">
+          <h3>Hanging from a Bar</h3>
+          <ul>
+            <li>Shoulder decompression</li>
+            <li>Grip-strength development</li>
+            <li>Ribcage expansion</li>
+          </ul>
+        </div>
+        <div class="item-card">
+          <h3>Barefoot Walking</h3>
+          <ul>
+            <li>Foot strengthening</li>
+            <li>Balance improvement</li>
+            <li>Terrain responsiveness</li>
+          </ul>
+        </div>
+        <div class="item-card">
+          <h3>Bone Loading / Impact</h3>
+          <ul>
+            <li>Mechanical stress on bone</li>
+            <li>Bone-strength signaling</li>
+          </ul>
+        </div>
+        <div class="item-card">
+          <h3>Lymphatic Movement</h3>
+          <ul>
+            <li>Walking</li>
+            <li>Bouncing</li>
+            <li>Rebounding</li>
+            <li>Circulation support</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Part III -->
+  <div class="section-divider"></div>
+  <section class="part part-sleep" id="part-sleep">
+    <div class="container">
+      <div class="part-header">
+        <div class="part-number">
+          <span class="label">Part III</span>
+          <span class="dot"></span>
+        </div>
+        <h2>Sleep, Recovery &amp; Circadian Rhythm</h2>
+      </div>
+      <div class="items-grid">
+        <div class="item-card">
+          <h3>Early Sleep Timing</h3>
+          <ul>
+            <li>Importance of the first half of sleep</li>
+            <li>Hormonal recovery processes</li>
+          </ul>
+        </div>
+        <div class="item-card">
+          <h3>Morning Sunlight Exposure</h3>
+          <ul>
+            <li>Circadian entrainment</li>
+            <li>Mood regulation</li>
+            <li>Sleep-quality improvement</li>
+          </ul>
+        </div>
+        <div class="item-card">
+          <h3>Reduced Nighttime Artificial Light</h3>
+          <ul>
+            <li>Circadian-rhythm protection</li>
+            <li>Melatonin support</li>
+          </ul>
+        </div>
+        <div class="item-card">
+          <h3>Short Daytime Naps</h3>
+          <ul>
+            <li>Approximately 20-minute naps</li>
+            <li>Early afternoon timing</li>
+            <li>Cognitive refresh</li>
+          </ul>
+        </div>
+        <div class="item-card">
+          <h3>Recovery Through Rest</h3>
+          <ul>
+            <li>Alternation between stress and restoration</li>
+            <li>Importance of downtime</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Part IV -->
+  <div class="section-divider"></div>
+  <section class="part part-environment" id="part-environment">
+    <div class="container">
+      <div class="part-header">
+        <div class="part-number">
+          <span class="label">Part IV</span>
+          <span class="dot"></span>
+        </div>
+        <h2>Environment &amp; Nature</h2>
+      </div>
+      <div class="items-grid">
+        <div class="item-card">
+          <h3>Time Outdoors</h3>
+          <ul>
+            <li>Natural sensory exposure</li>
+            <li>Reduced stress</li>
+          </ul>
+        </div>
+        <div class="item-card">
+          <h3>Trees and Forests</h3>
+          <ul>
+            <li>Calming nervous-system effects</li>
+            <li>Attention restoration</li>
+            <li>Phytoncides and air-quality benefits</li>
+          </ul>
+        </div>
+        <div class="item-card">
+          <h3>Water Environments</h3>
+          <ul>
+            <li>Rivers</li>
+            <li>Oceans</li>
+            <li>Fountains</li>
+            <li>Calming auditory effects</li>
+          </ul>
+        </div>
+        <div class="item-card">
+          <h3>Natural Terrain</h3>
+          <ul>
+            <li>Uneven surfaces</li>
+            <li>Adaptive movement demands</li>
+          </ul>
+        </div>
+        <div class="item-card">
+          <h3>Cold Exposure</h3>
+          <ul>
+            <li>Cold showers</li>
+            <li>Controlled discomfort</li>
+            <li>Stress adaptation</li>
+          </ul>
+        </div>
+        <div class="item-card">
+          <h3>Sunlight as Biological Input</h3>
+          <ul>
+            <li>Hormonal signaling</li>
+            <li>Wakefulness cues</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Part V -->
+  <div class="section-divider"></div>
+  <section class="part part-metabolism" id="part-metabolism">
+    <div class="container">
+      <div class="part-header">
+        <div class="part-number">
+          <span class="label">Part V</span>
+          <span class="dot"></span>
+        </div>
+        <h2>Metabolism, Fasting &amp; Energy</h2>
+      </div>
+      <div class="items-grid">
+        <div class="item-card">
+          <h3>Fasting Concepts</h3>
+          <ul>
+            <li>16-hour fasting window</li>
+            <li>Cellular cleanup processes</li>
+            <li>Mitophagy</li>
+            <li>Ketone production</li>
+          </ul>
+        </div>
+        <div class="item-card">
+          <h3>Metabolic Flexibility</h3>
+          <ul>
+            <li>Switching between fuel states</li>
+          </ul>
+        </div>
+        <div class="item-card">
+          <h3>Glucose Regulation</h3>
+          <ul>
+            <li>Muscle activity during sitting</li>
+            <li>Continuous low-level movement</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Part VI -->
+  <div class="section-divider"></div>
+  <section class="part part-brain" id="part-brain">
+    <div class="container">
+      <div class="part-header">
+        <div class="part-number">
+          <span class="label">Part VI</span>
+          <span class="dot"></span>
+        </div>
+        <h2>Brain, Learning &amp; Cognition</h2>
+      </div>
+      <div class="items-grid">
+        <div class="item-card">
+          <h3>Handwriting vs. Typing</h3>
+          <ul>
+            <li>Memory encoding differences</li>
+            <li>Slower processing improves retention</li>
+          </ul>
+        </div>
+        <div class="item-card">
+          <h3>Attention Restoration</h3>
+          <ul>
+            <li>Reduced multitasking</li>
+            <li>Focused cognition</li>
+          </ul>
+        </div>
+        <div class="item-card">
+          <h3>Information Overload</h3>
+          <ul>
+            <li>Constant stimulation harms concentration</li>
+            <li>Screen fatigue</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Part VII -->
+  <div class="section-divider"></div>
+  <section class="part part-emotional" id="part-emotional">
+    <div class="container">
+      <div class="part-header">
+        <div class="part-number">
+          <span class="label">Part VII</span>
+          <span class="dot"></span>
+        </div>
+        <h2>Emotional &amp; Psychological Themes</h2>
+      </div>
+      <div class="items-grid">
+        <div class="item-card">
+          <h3>Stress Stored Physically</h3>
+          <ul>
+            <li>Tight jaw</li>
+            <li>Shoulder tension</li>
+            <li>Shallow breathing</li>
+          </ul>
+        </div>
+        <div class="item-card">
+          <h3>Posture and Emotional State</h3>
+          <ul>
+            <li>Body language reflects internal condition</li>
+          </ul>
+        </div>
+        <div class="item-card">
+          <h3>Emotional Regulation Through</h3>
+          <ul>
+            <li>Breath</li>
+            <li>Movement</li>
+            <li>Stillness</li>
+            <li>Awareness</li>
+          </ul>
+        </div>
+        <div class="item-card">
+          <h3>Social Connection</h3>
+          <ul>
+            <li>Eye contact</li>
+            <li>Touch</li>
+            <li>Community</li>
+            <li>Nervous-system safety</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Part VIII / Closing -->
+  <div class="section-divider"></div>
+  <section class="closing part-worldview" id="part-worldview">
+    <div class="container">
+      <div class="part-header">
+        <div class="part-number">
+          <span class="label">Part VIII</span>
+          <span class="dot"></span>
+        </div>
+        <h2>Overarching Themes &amp; Worldview</h2>
+      </div>
+
+      <h2 style="font-family: 'Inter', sans-serif; font-size: 1.1rem; font-weight: 600; margin-bottom: 16px;">Core Themes</h2>
+      <div class="closing-grid">
+        <div class="closing-item">The body is highly adaptive</div>
+        <div class="closing-item">Modern environments often conflict with human biology</div>
+        <div class="closing-item">Recovery is as important as effort</div>
+        <div class="closing-item">Consistency matters more than intensity</div>
+      </div>
+
+      <h2 style="font-family: 'Inter', sans-serif; font-size: 1.1rem; font-weight: 600; margin-bottom: 16px;">Health Is Influenced By</h2>
+      <div class="closing-grid">
+        <div class="closing-item">Movement</div>
+        <div class="closing-item">Breath</div>
+        <div class="closing-item">Environment</div>
+        <div class="closing-item">Light</div>
+        <div class="closing-item">Sound</div>
+        <div class="closing-item">Posture</div>
+        <div class="closing-item">Relationships</div>
+        <div class="closing-item">Stress regulation</div>
+      </div>
+
+      <p class="closing-summary">
+        True health is not a destination but a continuous practice &mdash; woven from the daily choices that honor how we are designed to move, rest, connect, and belong in the natural world.
+      </p>
+
+      <a href="#top" class="back-to-top">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5"/></svg>
+        Back to top
+      </a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>Body Manual &mdash; A guide to human flourishing</p>
+    </div>
+  </footer>
+
+</body>
+</html>
